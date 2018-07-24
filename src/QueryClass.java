@@ -12,7 +12,9 @@ public class QueryClass extends BuildTable {
 
     }
 
-
+    public QueryClass(String conn, String user, String pass){
+        super(conn, user, pass);
+    }
 
 
     public void PrettyPrint(ResultSet rs) {

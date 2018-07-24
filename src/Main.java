@@ -5,34 +5,41 @@ public class Main {
 
 
 
-
     public static void main(String[] args) {
 
-        BuildTable table = new BuildTable();
-        QueryClass query = new QueryClass();
-        //table.BuildPlayers();
-        //table.FillPlayers();
-        //table.BuildBatting();
-        //table.FillBatting();
-        //table.BuildPitching();
-        //table.FillPitching();
-       // table.BuildTeams();
-         // table.FillTeams();
-        //table.BuildTeamYear();
-        //table.FillTeamYear();
-        //table.BuildPosition();
-        //table.FillPosition();
-        //table.BuildGames();
-        //table.FillGames();
-    //    query.Query1();
-        //query.Query1();
-        String input = null;
         Scanner scan = new Scanner(System.in);
+        String input;
 
+//Get Database Login Information Here
+        String conStringC;
+        String conStringU;
+        String conStringP;
 
+        LoginMenu login = new LoginMenu();
 
+        conStringC = login.getConString("database connection");
+        conStringU = login.getConString("database user");
+        conStringP = login.getConString("user password");
+        System.out.println("Great I've got your login information now lets use the database");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+/////////////////////////
 
+//Initial menu
 
+        System.out.println("Do you need to build the database y/n? ");
+        System.out.print("Build Database: ");
+        if(scan.nextLine() == "y") {
+            BuildTable table = new BuildTable(conStringC, conStringU, conStringP);
+            table.BuildDatabase();
+            System.out.println("The database has been built");
+            System.out.println("Continuing to the rest of the program");
+        }
+
+        System.out.println();
+        System.out.println("Welcome to the baseball database");
+        QueryClass query = new QueryClass(conStringC, conStringU, conStringP);
         while(true){
             System.out.println("PRESS 1-20 to view a query");
             System.out.println("press e to exit, o to submit your own query, or i to insert information into the database");
@@ -131,4 +138,5 @@ public class Main {
 
 
     }
+
 }

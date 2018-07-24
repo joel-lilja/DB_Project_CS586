@@ -1,4 +1,4 @@
-import java.sql.*;
+ import java.sql.*;
 
 
 
@@ -11,9 +11,13 @@ public class BuildTable {
     private String conStringP;
 
     public BuildTable(){
-        conStringC = "jdbc:postgresql://DBCLASS.cs.pdx.edu/sp18cwdb45";
-        conStringU = "sp18cwdb45";
-        conStringP = "d35exUrx*w";
+
+    }
+
+    public BuildTable(String conn, String user, String pass){
+        conStringC = conn;
+        conStringU = user;
+        conStringP = pass;
     }
 
 
@@ -57,6 +61,22 @@ public class BuildTable {
         conn = null;
     }
 
+    public void BuildDatabase(){
+        BuildPlayers();
+        FillPlayers();
+        BuildBatting();
+        FillBatting();
+        BuildPitching();
+        FillPitching();
+        BuildTeams();
+        FillTeams();
+        BuildTeamYear();
+        FillTeamYear();
+        BuildPosition();
+        FillPosition();
+        BuildGames();
+        FillGames();
+    }
 
     public void BuildPlayers(){
 
